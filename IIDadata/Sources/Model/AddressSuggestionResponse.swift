@@ -5,18 +5,28 @@
 import Foundation
 
 ///AddressSuggestionResponse represents a deserializable object used to hold API response.
-public struct AddressSuggestionResponse : Decodable {
+public struct AddressSuggestionResponse: Codable {
 	public let suggestions : [AddressSuggestions]?
+    
+    public init(suggestions: [AddressSuggestions]?) {
+        self.suggestions = suggestions
+    }
 }
 
 ///Every single suggestion is represented as AddressSuggestions.
-public struct AddressSuggestions : Decodable {
+public struct AddressSuggestions: Codable {
     ///Address in short format.
     public let value : String?
     ///All the data returned in response to suggestion query.
     public let data : AddressSuggestionData?
     ///Address in long format with region.
     public let unrestrictedValue : String?
+    
+    public init(value: String?, data: AddressSuggestionData?, unrestrictedValue: String?) {
+        self.value = value
+        self.data = data
+        self.unrestrictedValue = unrestrictedValue
+    }
     
     enum CodingKeys: String, CodingKey {
         case value
@@ -26,7 +36,7 @@ public struct AddressSuggestions : Decodable {
 }
 
 ///All the data returned in response to suggestion query.
-public struct AddressSuggestionData : Decodable {
+public struct AddressSuggestionData: Codable {
     public let area : String?
     public let areaFiasId : String?
     public let areaKladrId : String?
@@ -243,6 +253,136 @@ public struct AddressSuggestionData : Decodable {
         case unparsedParts = "unparsed_parts"
     }
     
+    init(
+        area: String?,
+        areaFiasId: String?, areaKladrId: String?, areaType: String?, areaTypeFull: String?, areaWithType: String?,
+        beltwayDistance: String?, beltwayHit: String?,
+        block: String?, blockType: String?, blockTypeFull: String?,
+        building: String?, buildingType: String?,
+        cadastralNumber: String?,
+        capitalMarker: String?,
+        city: String?, cityArea: String?,
+        cityDistrict: String?, cityDistrictFiasId: String?, cityDistrictKladrId: String?,
+        cityDistrictType: String?, cityDistrictTypeFull: String?, cityDistrictWithType: String?, cityFiasId: String?,
+        cityKladrId: String?, cityType: String?, cityTypeFull: String?, cityWithType: String?,
+        country: String?, countryIsoCode: String?,
+        federalDistrict: String?,
+        fiasActualityState: String?, fiasCode: String?, fiasId: String?, fiasLevel: String?,
+        flat: String?, flatFiasId: String?, flatArea: String?, flatPrice: String?, flatType: String?, flatTypeFull: String?,
+        geoLat: String?, geoLon: String?, geonameId: String?,
+        historyValues: [String]?,
+        house: String?, houseFiasId: String?, houseKladrId: String?, houseType: String?, houseTypeFull: String?,
+        kladrId: String?,
+        metro: [Metro]?,
+        okato: String?, oktmo: String?,
+        planningStructure: String?, planningStructureFiasId: String?, planningStructureKladrId: String?,
+        planningStructureType: String?, planningStructureTypeFull: String?, planningStructureWithType: String?,
+        postalBox: String?, postalCode: String?,
+        qc: String?, qcComplete: String?, qcGeo: String?, qcHouse: String?,
+        region: String?, regionFiasId: String?, regionIsoCode: String?, regionKladrId: String?, regionType: String?,
+        regionTypeFull: String?, regionWithType: String?,
+        settlement: String?, settlementFiasId: String?, settlementKladrId: String?, settlementType: String?,
+        settlementTypeFull: String?, settlementWithType: String?,
+        source: String?, squareMeterPrice: String?,
+        street: String?, streetFiasId: String?, streetKladrId: String?, streetType: String?, streetTypeFull: String?,
+        streetWithType: String?,
+        taxOffice: String?, taxOfficeLegal: String?,
+        timezone: String?,
+        unparsedParts: String?
+    ) {
+        self.area = area
+        self.areaFiasId = areaFiasId
+        self.areaKladrId = areaKladrId
+        self.areaType = areaType
+        self.areaTypeFull = areaTypeFull
+        self.areaWithType = areaWithType
+        self.beltwayDistance = beltwayDistance
+        self.beltwayHit = beltwayHit
+        self.block = block
+        self.blockType = blockType
+        self.blockTypeFull = blockTypeFull
+        self.building = building
+        self.buildingType = buildingType
+        self.cadastralNumber = cadastralNumber
+        self.capitalMarker = capitalMarker
+        self.city = city
+        self.cityArea = cityArea
+        self.cityDistrict = cityDistrict
+        self.cityDistrictFiasId = cityDistrictFiasId
+        self.cityDistrictKladrId = cityDistrictKladrId
+        self.cityDistrictType = cityDistrictType
+        self.cityDistrictTypeFull = cityDistrictTypeFull
+        self.cityDistrictWithType = cityDistrictWithType
+        self.cityFiasId = cityFiasId
+        self.cityKladrId = cityKladrId
+        self.cityType = cityType
+        self.cityTypeFull = cityTypeFull
+        self.cityWithType = cityWithType
+        self.country = country
+        self.countryIsoCode = countryIsoCode
+        self.federalDistrict = federalDistrict
+        self.fiasActualityState = fiasActualityState
+        self.fiasCode = fiasCode
+        self.fiasId = fiasId
+        self.fiasLevel = fiasLevel
+        self.flat = flat
+        self.flatFiasId = flatFiasId
+        self.flatArea = flatArea
+        self.flatPrice = flatPrice
+        self.flatType = flatType
+        self.flatTypeFull = flatTypeFull
+        self.geoLat = geoLat
+        self.geoLon = geoLon
+        self.geonameId = geonameId
+        self.historyValues = historyValues
+        self.house = house
+        self.houseFiasId = houseFiasId
+        self.houseKladrId = houseKladrId
+        self.houseType = houseType
+        self.houseTypeFull = houseTypeFull
+        self.kladrId = kladrId
+        self.metro = metro
+        self.okato = okato
+        self.oktmo = oktmo
+        self.planningStructure = planningStructure
+        self.planningStructureFiasId = planningStructureFiasId
+        self.planningStructureKladrId = planningStructureKladrId
+        self.planningStructureType = planningStructureType
+        self.planningStructureTypeFull = planningStructureTypeFull
+        self.planningStructureWithType = planningStructureWithType
+        self.postalBox = postalBox
+        self.postalCode = postalCode
+        self.qc = qc
+        self.qcComplete = qcComplete
+        self.qcGeo = qcGeo
+        self.qcHouse = qcHouse
+        self.region = region
+        self.regionFiasId = regionFiasId
+        self.regionIsoCode = regionIsoCode
+        self.regionKladrId = regionKladrId
+        self.regionType = regionType
+        self.regionTypeFull = regionTypeFull
+        self.regionWithType = regionWithType
+        self.settlement = settlement
+        self.settlementFiasId = settlementFiasId
+        self.settlementKladrId = settlementKladrId
+        self.settlementType = settlementType
+        self.settlementTypeFull = settlementTypeFull
+        self.settlementWithType = settlementWithType
+        self.source = source
+        self.squareMeterPrice = squareMeterPrice
+        self.street = street
+        self.streetFiasId = streetFiasId
+        self.streetKladrId = streetKladrId
+        self.streetType = streetType
+        self.streetTypeFull = streetTypeFull
+        self.streetWithType = streetWithType
+        self.taxOffice = taxOffice
+        self.taxOfficeLegal = taxOfficeLegal
+        self.timezone = timezone
+        self.unparsedParts = unparsedParts
+    }
+    
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         area = try values.decodeIfPresent(String.self, forKey: .area)
@@ -344,13 +484,19 @@ public struct AddressSuggestionData : Decodable {
 /// Structure holding metro station name, name of a line and distance to suggested address.
 /// If there aren't metro stations nearby or API token used not subscribed to "Maximal" package
 /// `nil` is returned instead.
-public struct Metro: Decodable{
+public struct Metro: Codable {
     public let name : String?
     public let line : String?
     public let distance : String?
     
     enum CodingKeys: String, CodingKey {
         case name, line, distance
+    }
+    
+    public init(name: String?, line: String?, distance: String?) {
+        self.name = name
+        self.line = line
+        self.distance = distance
     }
     
     public init(from decoder: Decoder) throws {
